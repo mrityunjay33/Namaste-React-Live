@@ -23,10 +23,10 @@
  * Transitive Dependencies
  */
 
-import {createElement} from "react";
+import {createElement as ce} from "react";
 import ReactDOM from "react-dom/client";
 
-const heading = createElement(
+const heading = ce(
   "h1",
   {
     id: "title",
@@ -35,7 +35,7 @@ const heading = createElement(
   "Heading 1 for parcel"
 );
 
-const heading2 = createElement(
+const heading2 = ce(
   "h2",
   {
     id: "title",
@@ -44,7 +44,7 @@ const heading2 = createElement(
   "Heading 2"
 );
 
-const container = createElement(
+const container = ce(
   "div",
   {
     id: "container",
