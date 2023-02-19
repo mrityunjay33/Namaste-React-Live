@@ -23,10 +23,22 @@
  * Transitive Dependencies
  */
 
-import {createElement as ce} from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 
-//  JSX ???
+// React.createElement => Object => HTML(DOM)
+
+//  JSX ???     (Babel converts JSX to React.createElement)
+/**
+ *  Advantages of JSX
+ *  1. Developers Experience Better
+ *  2. Syntactical Sugar
+ *  3. Readability
+ *  4. Less Code
+ *  5. Maintainability
+ *  6. No Repetation
+ */
+// JSX => React.createElement => Object => HTML(DOM)
 
 const heading = (
   <h1 id="title" key="h1">
