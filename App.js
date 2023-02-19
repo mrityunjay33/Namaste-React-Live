@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const heading = (
-  <h1 id="title" key="h1">
+const heading = (     //This is React element => It is object at EOD (heading is normal js variable)
+  <h1 id="title" key="h1">  
     Namaste React
   </h1>
 );
@@ -13,7 +13,7 @@ const heading = (
  *  Name of component starts with Capital letter - It's not mandatory
  */
 
-const HeaderComponent = () => {
+const HeaderComponent = () => {   //This is React Functional Component  => It is Funtion at EOD (HeaderComponent is normal js function)
   return (
     <div>
       <h1> Namaste React Functional Component </h1>
@@ -21,14 +21,8 @@ const HeaderComponent = () => {
     </div>
   )
 };
-const HeaderComponent2 = () => {
-    <div>
-      <h1> Namaste React Functional Component </h1>
-      <h2> This is h2 tag </h2>
-    </div>
-};
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(heading);
+root.render(<HeaderComponent/>);  //for rendering react element 'root.render(heading);'
