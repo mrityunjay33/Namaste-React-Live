@@ -23,10 +23,10 @@
  * Transitive Dependencies
  */
 
-import React from "react";
+import {createElement} from "react";
 import ReactDOM from "react-dom/client";
 
-const heading = React.createElement(
+const heading = createElement(
   "h1",
   {
     id: "title",
@@ -35,7 +35,7 @@ const heading = React.createElement(
   "Heading 1 for parcel"
 );
 
-const heading2 = React.createElement(
+const heading2 = createElement(
   "h2",
   {
     id: "title",
@@ -44,7 +44,7 @@ const heading2 = React.createElement(
   "Heading 2"
 );
 
-const container = React.createElement(
+const container = createElement(
   "div",
   {
     id: "container",
