@@ -54,6 +54,7 @@ const container = React.createElement(
 );
 
 console.log(heading);
+// React.createElement produces Object -> Which is then converted into HTML DOM
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
