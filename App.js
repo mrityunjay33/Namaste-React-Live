@@ -26,39 +26,19 @@
 import {createElement as ce} from "react";
 import ReactDOM from "react-dom/client";
 
-const heading = ce(
-  "h1",
-  {
-    id: "title",
-    key: "h1",
-  },
-  "Heading 1 for parcel"
-);
+//  JSX ???
 
-const heading2 = ce(
-  "h2",
-  {
-    id: "title",
-    key: "h2",
-  },
-  "Heading 2"
-);
+const heading = (
+  <h1 id="title" key="h1">
+    Namaste React
+    </h1>
+  );
 
-const container = ce(
-  "div",
-  {
-    id: "container",
-    hello: "world",
-  },
-  [heading, heading2]
-);
 
-console.log(heading);
-// React.createElement produces Object -> Which is then converted into HTML DOM
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 //passing a react element inside the root
 
 //async defer
-root.render(container);
+root.render(heading);
