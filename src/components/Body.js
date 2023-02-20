@@ -3,15 +3,16 @@ import RestrauntCard from "./RestrauntCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 
-function filterData(searchInput, restrautList) {
-  return restrautList.filter((restaurant) =>
+function filterData(searchInput, allRestaurants) {
+  return allRestaurants.filter((restaurant) =>
     restaurant.data.name.includes(searchInput)
   );
 }
 
 const Body = () => {
   const [searchInput, setSearchInput] = useState("");
-  const [restaurants, setRestaurant] = useState("");
+  const [allRestaurants, setAllRestaurants] = useState("");
+  const [filteredRestaurants, setFilteredRestaurants] = useState("");
 
   useEffect(() => {
     getRestaurants();
@@ -24,18 +25,14 @@ const Body = () => {
     const json = await data.json();
     console.log(json);
     // Optional Chaining
-    setRestaurant(json?.data?.cards[2]?.data?.data?.cards);
+    setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
   }
-  console.log("render");
 
-  /**
-   * Shimmer UI
-   *    - Conditional Rendering
-   *  If restaurant us Empty -> Shimmer UI
-   *  If restaurant has data => actual data UI
-   */
+  // not render component (Early return) => when no data then no render
+  if (!allRestaurants) return null;
 
-  return restaurants.length === 0 ? (<Shimmer/>) : (
+  return allRestaurants.length === 0 ? (<Shimmer/>) : (
     <>
       <div className="search-container">
         <input
@@ -48,15 +45,15 @@ const Body = () => {
         <button
           className="search-button"
           onClick={() => {
-            const data = filterData(searchInput, restrautList);
-            setRestaurant(data);
+            const data = filterData(searchInput, allRestaurants);
+            setFilteredRestaurants(data);
           }}
         >
           Search
         </button>
       </div>
       <div className="restaurant-list">
-        {restaurants.map((restaurant) => {
+        {filteredRestaurants.map((restaurant) => {
           return (
             <RestrauntCard {...restaurant.data} key={restaurant.data.id} />
           );
