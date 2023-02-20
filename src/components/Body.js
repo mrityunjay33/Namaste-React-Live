@@ -1,4 +1,3 @@
-import { restrautList } from "../contants";
 import RestrauntCard from "./RestrauntCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
