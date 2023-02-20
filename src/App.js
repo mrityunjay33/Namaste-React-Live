@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 
 // Default Import
 import Title from "./components/Title";
+import NewTitle from "./components/Title";   // Can have different names as well
+import NewTitle1 from "./components/Title.js"; // can have .js at the end as well   => file name can be .jsx and .tsx as well
 // Named Import
 import {Header} from "./components/Title";
 
@@ -785,6 +787,7 @@ const AppLayout = () => {
   return (
     <>
       <Obj.Header />
+      <NewTitle/>
       <Body />
       <Footer />
     </>
