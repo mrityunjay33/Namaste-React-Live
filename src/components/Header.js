@@ -8,7 +8,7 @@ const Title = () => (
     </a>
   );
 
-export const Header = () => {
+const Header = () => {
   return (
     <div className="header">
       <Title />
@@ -24,4 +24,4 @@ export const Header = () => {
   );
 };
 
-  export default Title;
+export default Header;
