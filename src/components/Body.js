@@ -1,9 +1,10 @@
 import { restrautList } from "../contants";
 import RestrauntCard from "./RestrauntCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
-function filterData(searchInput, restaurants) {
-  return restaurants.filter((restaurant) =>
+function filterData(searchInput, restrautList) {
+  return restrautList.filter((restaurant) =>
     restaurant.data.name.includes(searchInput)
   );
 }
@@ -11,6 +12,32 @@ function filterData(searchInput, restaurants) {
 const Body = () => {
   const [searchInput, setSearchInput] = useState("");
   const [restaurants, setRestaurant] = useState(restrautList);
+
+  // Empty dependency array => useEffect will be called one time after initial render
+  // dependency array [searchInput] => once after initial render + everytime after rerender (after setSearchInput changes)
+  useEffect(() => {
+    // API call
+    getRestaurants();
+  }, []);
+
+  async function getRestaurants() {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.5535048&lng=88.3565745&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await data.json();
+    console.log(json);
+    // Optional Chaining
+    setRestaurant(json?.data?.cards[2]?.data?.data?.cards);
+  }
+  console.log("render");
+
+  /**
+   * Shimmer UI
+   *    - Conditional Rendering
+   *  If restaurant us Empty -> Shimmer UI
+   *  If restaurant has data => actual data UI
+   */
+
   return (
     <>
       <div className="search-container">
@@ -24,7 +51,7 @@ const Body = () => {
         <button
           className="search-button"
           onClick={() => {
-            const data = filterData(searchInput, restaurants);
+            const data = filterData(searchInput, restrautList);
             setRestaurant(data);
           }}
         >
