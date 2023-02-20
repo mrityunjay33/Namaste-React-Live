@@ -11,12 +11,9 @@ function filterData(searchInput, restrautList) {
 
 const Body = () => {
   const [searchInput, setSearchInput] = useState("");
-  const [restaurants, setRestaurant] = useState(restrautList);
+  const [restaurants, setRestaurant] = useState("");
 
-  // Empty dependency array => useEffect will be called one time after initial render
-  // dependency array [searchInput] => once after initial render + everytime after rerender (after setSearchInput changes)
   useEffect(() => {
-    // API call
     getRestaurants();
   }, []);
 
@@ -38,7 +35,7 @@ const Body = () => {
    *  If restaurant has data => actual data UI
    */
 
-  return (
+  return restaurants.length === 0 ? (<Shimmer/>) : (
     <>
       <div className="search-container">
         <input
