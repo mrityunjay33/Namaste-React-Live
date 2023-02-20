@@ -5,7 +5,7 @@ import Shimmer from "./Shimmer";
 
 function filterData(searchInput, allRestaurants) {
   return allRestaurants.filter((restaurant) =>
-    restaurant.data.name.includes(searchInput)
+    restaurant?.data?.name?.toLowerCase().includes(searchInput.toLowerCase())
   );
 }
 
@@ -53,6 +53,7 @@ const Body = () => {
         </button>
       </div>
       <div className="restaurant-list">
+        {/* {No restaurant match search logic here} */}
         {filteredRestaurants.map((restaurant) => {
           return (
             <RestrauntCard {...restaurant.data} key={restaurant.data.id} />
