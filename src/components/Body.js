@@ -29,7 +29,7 @@ const Body = () => {
   }
 
   // not render component (Early return) => when no data then no render
-  if (!allRestaurants) return null;
+  // if (!allRestaurants) return null;
 
   return allRestaurants.length === 0 ? (<Shimmer/>) : (
     <>
