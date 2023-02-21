@@ -6,6 +6,7 @@ import Body from "./components/Body";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Cart from "./components/Cart";
+import RestraurantMenu from "./components/RestraurantMenu";
 import Error from "./components/Error";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
@@ -13,7 +14,6 @@ const AppLayout = () => {
   return (
     <>
       <Header />
-      {/* All the childrens will go into the outlet according to the route */}
       <Outlet />
       <Footer />
     </>
@@ -30,6 +30,7 @@ const appRouter = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
       { path: "/cart", element: <Cart /> },
+      { path: "/restaurant/:id", element: <RestraurantMenu /> },
     ],
   },
 ]);
