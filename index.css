@@ -1,17 +1,16 @@
-.header {
+/* .header {
     display: flex;
     justify-content: space-between ;
     margin: 10px;
     border: 1px solid black;
 }
-/* (Learn about pros and cons of all below items)
-Normal Native CSS
-SCSS and SASS
-Inline CSS
-Component Libraries -> Material UI, Base UI, Ant, Chakra
-Styled Components -> css inside js as props  
+ 
 Tailwind CSS Framework
-*/
+    - CSS on the go (in the same file)
+    - resusability 
+    - less bundle size (minimal css it offers to us)
+    - Flexible ui (Customizable as per need)
+
 .nav-items > ul{
     list-style-type: none;
     display: flex;
@@ -46,6 +45,11 @@ Tailwind CSS Framework
     background-color: lightgrey;
     margin: 10px;
 }
-/* .menu {
+.menu {
     display: flex;
 } */
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
