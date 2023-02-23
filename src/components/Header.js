@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Logo from "../assets/img/foodvilla.png";
 import { Link } from "react-router-dom";
+import useOnline from "../utils/useOnline";
 
 const Title = () => (
   <a href="/">
@@ -10,22 +11,32 @@ const Title = () => (
 
 const Header = () => {
   const [user, setUser] = useState(false);
+  const isOnline = useOnline();
   return (
     <div className="header">
       <Title />
       <div className="nav-items">
         <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-          <li><Link to="/cart">Cart</Link></li>
-          {user ? (
-            <button onClick={() => setUser(false)}>Logout</button>
-          ) : (
-            <button onClick={() => setUser(true)}>Login</button>
-          )}
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+          <li>
+            <Link to="/cart">Cart</Link>
+          </li>
         </ul>
       </div>
+      <h1>{isOnline ? "✅" : "🔴"}</h1>
+      {user ? (
+        <button onClick={() => setUser(false)}>Logout</button>
+      ) : (
+        <button onClick={() => setUser(true)}>Login</button>
+      )}
     </div>
   );
 };
