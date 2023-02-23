@@ -4,7 +4,13 @@
     margin: 10px;
     border: 1px solid black;
 }
-
+/* (Learn about pros and cons of all below items)
+Normal Native CSS
+SCSS and SASS
+Inline CSS
+Component Libraries -> Material UI, Base UI, Ant, Chakra
+Tailwind CSS Framework
+*/
 .nav-items > ul{
     list-style-type: none;
     display: flex;
