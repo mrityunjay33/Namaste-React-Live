@@ -7,7 +7,6 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Cart from "./components/Cart";
 import Profile from "./components/Profile";
-import AboutClass from "./components/AboutClass";
 import RestraurantMenu from "./components/RestraurantMenu";
 import Error from "./components/Error";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
@@ -16,6 +15,8 @@ import Shimmer from "./components/Shimmer";
 // Chunking || Code Splitting || Dynamic Bundling || Lazy Loading || On Demand Loading || Dynamic Import
 const Instamart = lazy(() => import("./components/Instamart")); // this is promise
 // Upon on demand loading -> on reander -> react will suspend loading and throw error
+// Do Lazy loading always on the top -> not inside any component
+const AboutClass = lazy(() => import("./components/AboutClass"));
 
 const AppLayout = () => {
   return (
@@ -36,7 +37,11 @@ const appRouter = createBrowserRouter([
       { path: "/", element: <Body /> },
       {
         path: "/about",
-        element: <AboutClass />,
+        element: (
+          <Suspense fallback={<div>Loading....</div>}>
+            <AboutClass />
+          </Suspense>
+        ),
         children: [{ path: "profile", element: <Profile /> }],
       },
       { path: "/contact", element: <Contact /> },
@@ -44,7 +49,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/instamart",
         element: (
-          <Suspense fallback={<Shimmer/>}>  
+          <Suspense fallback={<Shimmer />}>
             <Instamart />
           </Suspense>
         ),
