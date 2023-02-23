@@ -11,6 +11,9 @@ import AboutClass from "./components/AboutClass";
 import RestraurantMenu from "./components/RestraurantMenu";
 import Error from "./components/Error";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import Instamart from "./components/Instamart";
+
+// Chunking || Code Splitting || Dynamic Bundling || Lazy Loading || On Demand Loading || Dynamic Import
 
 const AppLayout = () => {
   return (
@@ -36,6 +39,7 @@ const appRouter = createBrowserRouter([
       },
       { path: "/contact", element: <Contact /> },
       { path: "/cart", element: <Cart /> },
+      { path: "/instamart", element: <Instamart /> },
       { path: "/restaurant/:resId", element: <RestraurantMenu /> },
     ],
   },
