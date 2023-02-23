@@ -39,7 +39,11 @@ const Body = () => {
           onChange={(e) => setSearchInput(e.target.value)}
         />
         <button
-          className="search-button"
+          style={{
+            backgroundColor: "green",
+            color: "black",
+            border: "1px solid",
+          }}
           onClick={() => {
             const data = filterData(searchInput, allRestaurants);
             setFilteredRestaurants(data);

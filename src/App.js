@@ -12,10 +12,7 @@ import Error from "./components/Error";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Shimmer from "./components/Shimmer";
 
-// Chunking || Code Splitting || Dynamic Bundling || Lazy Loading || On Demand Loading || Dynamic Import
-const Instamart = lazy(() => import("./components/Instamart")); // this is promise
-// Upon on demand loading -> on reander -> react will suspend loading and throw error
-// Do Lazy loading always on the top -> not inside any component
+const Instamart = lazy(() => import("./components/Instamart")); 
 const AboutClass = lazy(() => import("./components/AboutClass"));
 
 const AppLayout = () => {
