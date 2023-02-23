@@ -7,6 +7,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Cart from "./components/Cart";
 import Profile from "./components/Profile";
+import AboutClass from "./components/AboutClass";
 import RestraurantMenu from "./components/RestraurantMenu";
 import Error from "./components/Error";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
@@ -30,7 +31,7 @@ const appRouter = createBrowserRouter([
       { path: "/", element: <Body /> },
       {
         path: "/about",
-        element: <About />,
+        element: <AboutClass />,
         children: [{ path: "profile", element: <Profile /> },],
       },
       { path: "/contact", element: <Contact /> },
