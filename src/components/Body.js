@@ -43,7 +43,9 @@ const Body = () => {
             backgroundColor: "green",
             color: "black",
             border: "1px solid",
-          }}
+          }
+          // passing js object
+        }
           onClick={() => {
             const data = filterData(searchInput, allRestaurants);
             setFilteredRestaurants(data);
