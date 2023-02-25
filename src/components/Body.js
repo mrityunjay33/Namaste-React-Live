@@ -4,7 +4,7 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
-const Body = () => {
+const Body = ({user}) => {
   const [searchInput, setSearchInput] = useState("");
   const [allRestaurants, setAllRestaurants] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState("");
@@ -56,7 +56,7 @@ const Body = () => {
               to={"/restaurant/" + restaurant.data.id}
               key={restaurant.data.id}
             >
-              <RestrauntCard {...restaurant.data} />
+              <RestrauntCard {...restaurant.data} user={user} />
             </Link>
           );
         })}
