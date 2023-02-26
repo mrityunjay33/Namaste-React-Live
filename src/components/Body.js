@@ -50,11 +50,11 @@ const Body = () => {
         >
           Search
         </button>
-        <input value={user.name} onChange={ e => setUser({
+        <input className="p-2 m-2" value={user.name} onChange={ e => setUser({
           ...user,
           name: e.target.value,
         })} ></input>
-        <input value={user.email} onChange={ e => setUser({
+        <input className="p-2 m-2" value={user.email} onChange={ e => setUser({
           ...user,
           email: e.target.value,
         })} ></input>
