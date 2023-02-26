@@ -1,13 +1,16 @@
 import RestrauntCard from "./RestrauntCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
-const Body = ({user}) => {
+import UserContext from "../utils/UserContext";
+
+const Body = () => {
   const [searchInput, setSearchInput] = useState("");
   const [allRestaurants, setAllRestaurants] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState("");
+  const {user, setUser} = useContext(UserContext);
 
   useEffect(() => {
     getRestaurants();
@@ -22,9 +25,9 @@ const Body = ({user}) => {
     setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
   }
   const isOnline = useOnline();
-  if(!isOnline){
+  if (!isOnline) {
     return <div>You are offline</div>;
-  };
+  }
 
   return allRestaurants.length === 0 ? (
     <Shimmer />
@@ -47,6 +50,14 @@ const Body = ({user}) => {
         >
           Search
         </button>
+        <input value={user.name} onChange={ e => setUser({
+          ...user,
+          name: e.target.value,
+        })} ></input>
+        <input value={user.email} onChange={ e => setUser({
+          ...user,
+          email: e.target.value,
+        })} ></input>
       </div>
       <div className="flex flex-wrap">
         {/* {No restaurant match search logic here} */}
@@ -56,7 +67,7 @@ const Body = ({user}) => {
               to={"/restaurant/" + restaurant.data.id}
               key={restaurant.data.id}
             >
-              <RestrauntCard {...restaurant.data} user={user} />
+              <RestrauntCard {...restaurant.data} />
             </Link>
           );
         })}

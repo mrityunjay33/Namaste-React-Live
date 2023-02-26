@@ -11,20 +11,25 @@ import RestraurantMenu from "./components/RestraurantMenu";
 import Error from "./components/Error";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Shimmer from "./components/Shimmer";
+import UserContext from "./utils/UserContext";
 
 const Instamart = lazy(() => import("./components/Instamart")); 
 const AboutClass = lazy(() => import("./components/AboutClass"));
 
 const AppLayout = () => {
-  const [user, setUser] = useState({
-    name: "Mrityunjay",
-    email: "Mrityunjay@gmail.com",
+
+  const [ user, setUser ] = useState({
+      name: "Mrityunjay",
+      email: "new@example.com",
   });
+  
   return (
     <>
+    <UserContext.Provider value={{ user, setUser }}>
       <Header />
       <Outlet />
       <Footer />
+      </UserContext.Provider>
     </>
   );
 };
@@ -35,10 +40,7 @@ const appRouter = createBrowserRouter([
     element: <AppLayout />,
     errorElement: <Error />,
     children: [
-      { path: "/", element: <Body user={{
-        name: "Mrityunjay",
-        email: "Mrityunjay@gmail.com",
-      }} /> },
+      { path: "/", element: <Body /> },
       {
         path: "/about",
         element: (
