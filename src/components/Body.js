@@ -29,7 +29,7 @@ const Body = () => {
     return <div>You are offline</div>;
   }
 
-  return allRestaurants.length === 0 ? (
+  return allRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
     <>
