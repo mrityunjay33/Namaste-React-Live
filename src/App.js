@@ -12,6 +12,8 @@ import Error from "./components/Error";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import Store from "./utils/Store";
 
 const Instamart = lazy(() => import("./components/Instamart")); 
 const AboutClass = lazy(() => import("./components/AboutClass"));
@@ -25,11 +27,13 @@ const AppLayout = () => {
   
   return (
     <>
+    <Provider store={Store}>
     <UserContext.Provider value={{ user, setUser }}>
       <Header />
       <Outlet />
       <Footer />
       </UserContext.Provider>
+      </Provider>
     </>
   );
 };
