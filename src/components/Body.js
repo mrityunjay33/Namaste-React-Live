@@ -10,7 +10,7 @@ const Body = () => {
   const [searchInput, setSearchInput] = useState("");
   const [allRestaurants, setAllRestaurants] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState("");
-  const {user, setUser} = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     getRestaurants();
@@ -35,6 +35,7 @@ const Body = () => {
     <>
       <div className="p-5 bg-pink-50 my-5">
         <input
+          data-testid="search-input"
           type="text"
           placeholder="Search"
           className="focus:bg-green-100 p-2 m-2"
@@ -42,6 +43,7 @@ const Body = () => {
           onChange={(e) => setSearchInput(e.target.value)}
         />
         <button
+          data-testid="search-btn"
           className="p-2 m-2 bg-purple-900 hover:bg-green-900 text-white rounded-md"
           onClick={() => {
             const data = filterData(searchInput, allRestaurants);
@@ -50,16 +52,28 @@ const Body = () => {
         >
           Search
         </button>
-        <input className="p-2 m-2" value={user.name} onChange={ e => setUser({
-          ...user,
-          name: e.target.value,
-        })} ></input>
-        <input className="p-2 m-2" value={user.email} onChange={ e => setUser({
-          ...user,
-          email: e.target.value,
-        })} ></input>
+        <input
+          className="p-2 m-2"
+          value={user.name}
+          onChange={(e) =>
+            setUser({
+              ...user,
+              name: e.target.value,
+            })
+          }
+        ></input>
+        <input
+          className="p-2 m-2"
+          value={user.email}
+          onChange={(e) =>
+            setUser({
+              ...user,
+              email: e.target.value,
+            })
+          }
+        ></input>
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap" data-testid="res-list">
         {/* {No restaurant match search logic here} */}
         {filteredRestaurants.map((restaurant) => {
           return (

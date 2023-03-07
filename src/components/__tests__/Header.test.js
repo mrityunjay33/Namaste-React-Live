@@ -16,3 +16,29 @@ test("Logo should render on loading", () => {
     const logo = header.getAllByTestId('logo');
     expect(logo[0].src).toBe("http://localhost/dummy.png");
 });
+
+test("Online status should be green on rendering header", () => {
+    const header = render(
+        <StaticRouter>
+        <Provider store={store}>
+        <Header />
+        </Provider>
+        </StaticRouter>
+    );
+
+    const onlineStatus = header.getByTestId('online-status');
+    expect(onlineStatus.innerHTML).toBe("✅");
+});
+
+test("Cart should have 0 item on rendering header", () => {
+    const header = render(
+        <StaticRouter>
+        <Provider store={store}>
+        <Header />
+        </Provider>
+        </StaticRouter>
+    );
+
+    const cartItem = header.getByTestId('cart');
+    expect(cartItem.innerHTML).toBe("Cart - 0 items");
+});
