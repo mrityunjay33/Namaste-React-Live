@@ -1,6 +1,6 @@
 # Namaste-React-Live
 
--------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
 Q1. What is crossorigin attribute in script tag of CDN link of react ?
 
 <script
@@ -49,7 +49,28 @@ Additionally, if a script is loaded asynchronously or defer, the order of the sc
 It's generally a good practice to order scripts in a way that makes sense for your application and to ensure that any dependencies are loaded before scripts that use them.
 
 -------------------------------------------------------------------------------------------
-Q4. 
+Q4. why script tag is witten inside body
 
+The script tag can be included in either the head or body section of an HTML document, depending on the requirements of the script. However, it's generally recommended to place script tags at the end of the body section of an HTML document.
 
+The reason for this recommendation is that scripts can block the rendering of the HTML page. When a script is encountered, the browser will pause parsing and rendering of the HTML until the script has been downloaded and executed. If the script takes a long time to execute, it can delay the rendering of the page and make the user experience slower.
 
+When an error occurs in JavaScript code that is executed in the head section of an HTML document, the browser will halt the rendering of the page and display an error message in the console. This can prevent the rest of the page from loading or displaying correctly, and can also impact the performance and user experience of the website.
+
+By placing script tags at the end of the body section, the browser can parse and render the HTML content first, and then load and execute the scripts afterwards. This allows the user to see the page content more quickly and can help improve the overall user experience.
+
+However, there are situations where scripts need to be included in the head section of an HTML document, such as when they define global variables or are required by other scripts that are loaded in the head section. In general, it's best to consider the requirements of your scripts and place them in a way that optimizes performance and functionality.
+
+--------------------------------------------------------------------------------------
+Q5. can script tag be written after closing of body tag ?
+
+Yes, the script tag can be placed after the closing body tag (</body>) in an HTML document, but it is not recommended.
+
+Placing the script tag after the closing body tag is not recommended because it can lead to unexpected behavior in some browsers. In some cases, the browser may not be able to locate the script tag if it is placed outside of the body section, which can cause errors or prevent the script from running altogether.
+
+Additionally, placing the script tag after the body tag may cause issues with accessibility and search engine optimization. Screen readers and search engines typically follow the HTML structure to determine the content of a page, and placing the script tag outside of the body section can make it more difficult for these tools to correctly identify the content of the page.
+
+In summary, while it is technically possible to place the script tag after the closing body tag, it is not recommended due to potential browser compatibility issues and problems with accessibility and SEO. It's generally best to place scripts in the head or body section of an HTML document depending on their requirements.
+
+--------------------------------------------------------------------------------------
+Q6. 
