@@ -34,7 +34,6 @@ Ans. The "type" attribute in a script tag is used to specify the MIME type of th
 
 In general, the "type" attribute is used to specify the format of the script being loaded so that the browser can handle it correctly. However, in many cases, the default value of "text/javascript" is sufficient, and the "type" attribute can be omitted.
 
-
 When a script tag has the "type" attribute set to "module", it tells the browser to treat the script as a module and to load it using the ES module system. This allows the script to import and export functions and variables from other modules, which can help keep the code organized and maintainable.
 -----------------------------------------------------------------------------------------
 
